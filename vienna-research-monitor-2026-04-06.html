@@ -899,12 +899,21 @@
     }
 
     .timeline-item {
+      display: block;
       background: var(--white);
       border: 1px solid rgba(0,0,0,.065);
       border-radius: 4px;
       padding: 1rem 1.25rem;
       margin-bottom: .75rem;
       box-shadow: 0 2px 6px rgba(0,0,0,.055);
+      text-decoration: none;
+      color: inherit;
+      transition: border-color 0.2s, box-shadow 0.2s, transform 0.15s;
+    }
+    .timeline-item:hover {
+      border-color: var(--blue);
+      box-shadow: 0 4px 16px rgba(26,122,173,.18);
+      transform: translateY(-2px);
     }
     .timeline-item:last-child { margin-bottom: 0; }
 
@@ -1453,47 +1462,47 @@
           <div class="timeline-group" role="listitem">
             <div class="timeline-dot" aria-hidden="true"></div>
             <p class="timeline-date">January 2026</p>
-            <div class="timeline-item">
+            <a class="timeline-item" href="https://cordis.europa.eu/project/id/101201037" target="_blank" rel="noopener">
               <h4>ERC Advanced Grant — TU Wien</h4>
               <p>Realistic modeling of unconventional superconductors</p>
-              <p class="grant-meta">4 years · Jan 2026 – Dec 2029 · Grant 101201037</p>
-            </div>
-            <div class="timeline-item">
+              <p class="grant-meta">4 years · Jan 2026 – Dec 2029 · Grant 101201037 ↗</p>
+            </a>
+            <a class="timeline-item" href="https://cordis.europa.eu/project/id/101227573" target="_blank" rel="noopener">
               <h4>MSCA Doctoral Network — TU Wien</h4>
               <p>Secure AI and Digital Twin for Smart Energy</p>
-              <p class="grant-meta">Grant 101227573</p>
-            </div>
+              <p class="grant-meta">Grant 101227573 ↗</p>
+            </a>
           </div>
 
           <div class="timeline-group" role="listitem">
             <div class="timeline-dot" aria-hidden="true"></div>
             <p class="timeline-date">April 2026</p>
-            <div class="timeline-item">
+            <a class="timeline-item" href="https://cordis.europa.eu/project/id/101222107" target="_blank" rel="noopener">
               <h4>ERC Grant</h4>
               <p>Hypothalamic control of stress adaptations</p>
-              <p class="grant-meta">Grant 101222107</p>
-            </div>
+              <p class="grant-meta">Grant 101222107 ↗</p>
+            </a>
           </div>
 
           <div class="timeline-group" role="listitem">
             <div class="timeline-dot" aria-hidden="true"></div>
             <p class="timeline-date">September 2026 — Cluster</p>
             <div class="timeline-cluster">
-              <div class="timeline-item">
+              <a class="timeline-item" href="https://cordis.europa.eu/project/id/101199531" target="_blank" rel="noopener">
                 <h4>ERC Grant</h4>
                 <p>New Paradigm of Stellar Convection</p>
-                <p class="grant-meta">Grant 101199531</p>
-              </div>
-              <div class="timeline-item">
+                <p class="grant-meta">Grant 101199531 ↗</p>
+              </a>
+              <a class="timeline-item" href="https://cordis.europa.eu/project/id/101200084" target="_blank" rel="noopener">
                 <h4>ERC Grant</h4>
                 <p>Multi-messenger science with black hole binaries</p>
-                <p class="grant-meta">Grant 101200084</p>
-              </div>
-              <div class="timeline-item">
+                <p class="grant-meta">Grant 101200084 ↗</p>
+              </a>
+              <a class="timeline-item" href="https://cordis.europa.eu/project/id/101209656" target="_blank" rel="noopener">
                 <h4>MSCA Postdoctoral Fellowship — TU Wien</h4>
                 <p>Quantum resource state preparation with neutral atoms</p>
-                <p class="grant-meta">Grant 101209656</p>
-              </div>
+                <p class="grant-meta">Grant 101209656 ↗</p>
+              </a>
             </div>
           </div>
 
@@ -1549,7 +1558,7 @@
     <section class="closing-section" aria-labelledby="closing-h2">
       <div class="closing-inner">
         <h2 id="closing-h2">Science is the Only Institution That Publishes Evidence of Its Own Failures.</h2>
-        <p>Vienna produced two of those papers this week. That is not a small thing. Most institutions — governments, courts, corporations — bury the evidence when their methods don't hold up. Science has, slowly and unevenly, built a culture of the opposite. The replication movement is messy, contentious, and politically fraught within academia. It is also the most honest thing happening in knowledge production right now. The two Nature papers represent years of careful, collaborative, often unrewarded work by researchers who chose to ask hard questions about their own field rather than produce another increment of conventional output. Vienna funded some of that work. The return on that investment is measured not in patents or spinouts, but in the slightly improved reliability of the evidence base that the rest of civilization depends on.</p>
+        <p>Vienna produced two of those papers this week. The replication movement is messy, contentious, and politically fraught within academia. It is also the most honest thing happening in knowledge production right now.</p>
         <a href="https://www.wwtf.at" class="cta-button" target="_blank" rel="noopener">Explore WWTF Projects →</a>
       </div>
     </section>
