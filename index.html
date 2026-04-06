@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0d5f7a">
+  <title>Building trust in scientific evidence — WWTF Science Intelligence</title>
+  <meta name="description" content="A WWTF Science Intelligence Briefing on reproducibility in the social and behavioural sciences.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,700;1,400&family=Source+Sans+3:ital,wght@0,400;0,600;0,700;1,400&display=swap">
+  <link rel="preload" as="image" href="https://www.nature.com/immersive/d42859-026-00015-y/assets/OcuxBrtqY3/nature-replication-and-reproducability-shorthand-desktop.jpg">
+
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      /* WWTF brand palette */
+      --navy:        #0d5f7a;   /* WWTF dark teal — hero, nav, dark sections */
+      --navy-mid:    #0a4f67;   /* darker teal for gradients */
+      --cream:       #f0f0ee;   /* WWTF light grey page bg */
+      --white:       #ffffff;
+      --orange:      #1a7aad;   /* WWTF accent blue (replaces orange) */
+      --orange-lt:   #5aafd4;   /* lighter WWTF blue */
+      --green:       #2d7d5b;
+      --green-lt:    #e5f3ec;
+      --gold:        #4fa8cc;   /* WWTF mid-blue for sticky card border */
+      --red-soft:    #c0392b;
+      --grey-50:     #f4f4f2;
+      --grey-100:    #e2e2e0;
+      --grey-400:    #8a8a88;
+      --grey-700:    #4a4a48;
+      --text:        #1a1917;
+
+      --f-hero:  clamp(2.4rem, 5.5vw, 5rem);
+      --f-h2:    clamp(1.7rem, 3.2vw, 2.8rem);
+      --f-h3:    clamp(1.2rem, 1.8vw, 1.55rem);
+      --f-body:  clamp(1rem,   1.1vw, 1.125rem);
+      --f-sm:    clamp(0.78rem, 0.85vw, 0.875rem);
+
+      --gap: clamp(4rem, 9vh, 7rem);
+      --px:  clamp(1.5rem, 5vw, 4.5rem);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Source Sans 3', system-ui, sans-serif;
+      color: var(--text); background: var(--cream);
+      line-height: 1.7; -webkit-font-smoothing: antialiased;
+    }
+
+    /* WWTF logo mark (inline SVG recreation) */
+    .wwtf-logo {
+      display: flex; align-items: center; gap: 0.75rem; text-decoration: none;
+    }
+    .wwtf-logo-box {
+      background: var(--navy); display: flex; align-items: center;
+      padding: 0.3rem 0.55rem; border-radius: 2px; gap: 0;
+    }
+    .wwtf-logo-letter {
+      color: #fff; font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.95rem; font-weight: 700; letter-spacing: 0.05em;
+    }
+    .wwtf-logo-sep {
+      width: 1px; height: 0.9rem; background: rgba(255,255,255,0.45);
+      margin: 0 0.28rem;
+    }
+    .wwtf-logo-wordmark {
+      font-family: 'Source Sans 3', sans-serif; font-size: 0.72rem;
+      font-weight: 600; text-transform: uppercase; letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.6); line-height: 1.3;
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .step, .paper-item, .reveal-el { opacity: 1 !important; transform: none !important; }
+    }
+
+    /* ── Skip link ── */
+    .skip { position: absolute; top: -100%; left: 1rem; padding: .75rem 1.25rem;
+      background: var(--navy); color: #fff; font-weight: 600;
+      text-decoration: none; z-index: 9999; border-radius: 0 0 4px 4px; }
+    .skip:focus { top: 0; }
+
+    /* ── Nav ── */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem var(--px);
+      background: rgba(28,39,53,.93); backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+    }
+    .nav-tag { font-size: var(--f-sm); color: rgba(255,255,255,.45);
+      text-transform: uppercase; letter-spacing: .1em; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100dvh; display: grid; grid-template-columns: 1fr 1fr;
+    }
+    @supports not (height: 100dvh) { .hero { min-height: 100vh; } }
+
+    .hero-left {
+      background: var(--navy);
+      display: flex; flex-direction: column; justify-content: flex-end;
+      padding: clamp(6rem,10vw,9rem) var(--px) clamp(3rem,6vw,5rem);
+    }
+    .hero-eyebrow {
+      font-size: var(--f-sm); text-transform: uppercase; letter-spacing: .12em;
+      color: var(--orange-lt); font-weight: 600; margin-bottom: 1.5rem;
+    }
+    .hero-h1 {
+      font-family: 'Libre Baskerville',serif; font-size: var(--f-hero);
+      line-height: 1.04; font-weight: 900; color: #fff; margin-bottom: 1.5rem;
+    }
+    .hero-sub {
+      font-size: clamp(1rem,1.25vw,1.18rem); color: rgba(255,255,255,.72);
+      line-height: 1.6; max-width: 44ch; margin-bottom: 2.5rem;
+    }
+    .hero-date { font-size: var(--f-sm); color: rgba(255,255,255,.38);
+      text-transform: uppercase; letter-spacing: .08em; }
+
+    .hero-right { position: relative; overflow: hidden; background: var(--navy-mid); }
+    .hero-right img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center;
+      display: block;
+    }
+    .hero-credit {
+      position: absolute; bottom: 1.2rem; right: 1.2rem;
+      font-size: .7rem; color: rgba(255,255,255,.5);
+      background: rgba(0,0,0,.32); padding: .2rem .5rem; border-radius: 3px;
+    }
+
+    /* ── Intro ── */
+    .intro { background: var(--white); padding: var(--gap) var(--px); }
+    .prose { max-width: 70ch; margin: 0 auto; }
+    .prose p { font-size: clamp(1.02rem,1.15vw,1.15rem); line-height: 1.75; }
+    .prose p + p { margin-top: 1.4rem; }
+    .prose a { color: var(--navy); text-underline-offset: 3px; }
+    .prose a:hover { color: var(--orange); }
+
+    /* ── Stats ── */
+    .stats { background: var(--navy); padding: clamp(3.5rem,7vh,6rem) var(--px); }
+    .stats-eyebrow {
+      text-align: center; color: var(--orange-lt);
+      font-size: var(--f-sm); text-transform: uppercase; letter-spacing: .1em;
+      margin-bottom: 3rem;
+    }
+    .stats-grid {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      gap: 2rem; max-width: 860px; margin: 0 auto;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: 'Libre Baskerville',serif;
+      font-size: clamp(3rem,5.5vw,5rem); font-weight: 900;
+      line-height: 1; color: #fff; display: block; margin-bottom: .5rem;
+    }
+    .stat-desc { font-size: var(--f-sm); color: rgba(255,255,255,.55);
+      line-height: 1.5; max-width: 18ch; margin: 0 auto; }
+
+    /* ── Scrolly ── */
+    .scrolly-wrap { background: var(--grey-50); padding: var(--gap) 0; }
+    .scrolly-intro {
+      text-align: center; padding: 0 var(--px) 4rem;
+      max-width: 62ch; margin: 0 auto;
+    }
+    .scrolly-intro h2 {
+      font-family: 'Libre Baskerville',serif; font-size: var(--f-h2);
+      font-weight: 700; line-height: 1.2; margin-bottom: 1rem;
+    }
+    .scrolly-intro p { color: var(--grey-700); font-size: var(--f-body); }
+
+    .scrolly-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      max-width: 1160px; margin: 0 auto;
+      padding: 0 var(--px); gap: 0; align-items: start;
+    }
+
+    /* Sticky side */
+    .sticky-col {
+      position: sticky; top: 15dvh; height: 70dvh;
+      display: flex; align-items: center; padding-right: 3rem;
+    }
+    @supports not (top: 15dvh) { .sticky-col { top: 15vh; height: 70vh; } }
+
+    .g-card {
+      width: 100%; background: var(--navy); border-radius: 16px;
+      padding: 3rem 2.5rem; text-align: center;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; gap: 1.25rem;
+      transition: border-color .5s ease;
+      border-top: 4px solid var(--gold);
+    }
+    .g-card[data-state="1"] { border-color: var(--orange-lt); }
+    .g-card[data-state="2"] { border-color: var(--red-soft); }
+    .g-card[data-state="3"] { border-color: #4caf85; }
+
+    .g-num {
+      font-family: 'Libre Baskerville',serif;
+      font-size: clamp(3.5rem,5.5vw,5.5rem); font-weight: 900;
+      line-height: 1; color: #fff;
+      transition: opacity .3s;
+    }
+    .g-num .pct { color: var(--orange-lt); }
+    .g-card[data-state="3"] .g-num .pct { color: #4caf85; }
+
+    .g-label {
+      font-size: .88rem; color: rgba(255,255,255,.62);
+      text-transform: uppercase; letter-spacing: .07em;
+      line-height: 1.45; max-width: 22ch;
+    }
+    .g-sub { font-size: .8rem; color: rgba(255,255,255,.32); margin-top: -.5rem; }
+
+    /* Icon SVG in card */
+    .g-icon { width: 52px; height: 52px; opacity: .7; }
+
+    /* Steps column */
+    .steps-col { padding: 18vh 0 28vh; }
+    .step {
+      background: var(--white); border-radius: 12px; padding: 2.25rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 2px 14px rgba(0,0,0,.06);
+      opacity: .32; transition: opacity .4s, box-shadow .4s;
+    }
+    .step.is-active { opacity: 1; box-shadow: 0 8px 30px rgba(0,0,0,.13); }
+
+    .step-tag {
+      display: inline-block; font-size: .7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .1em;
+      padding: .22rem .6rem; border-radius: 4px; margin-bottom: .9rem;
+    }
+    .step[data-step="0"] .step-tag { background: #fef2cc; color: #8a5e00; }
+    .step[data-step="1"] .step-tag { background: #fde5d8; color: #a83300; }
+    .step[data-step="2"] .step-tag { background: #fddada; color: #920000; }
+    .step[data-step="3"] .step-tag { background: var(--green-lt); color: var(--green); }
+
+    .step h3 {
+      font-family: 'Libre Baskerville',serif; font-size: var(--f-h3);
+      font-weight: 700; line-height: 1.25; margin-bottom: .7rem;
+    }
+    .step p { font-size: var(--f-body); color: var(--grey-700); line-height: 1.68; }
+    .step p + p { margin-top: .7rem; }
+
+    .step-kpi {
+      margin-top: 1.2rem; padding: .9rem 1.1rem; background: var(--grey-50);
+      border-radius: 8px; display: flex; align-items: center; gap: 1rem;
+    }
+    .step-kpi-n {
+      font-family: 'Libre Baskerville',serif; font-size: 2rem; font-weight: 900;
+      line-height: 1; color: var(--navy); white-space: nowrap;
+    }
+    .step-kpi-t { font-size: .82rem; color: var(--grey-700); line-height: 1.4; }
+
+    /* ── Pull quote ── */
+    .pq { background: var(--white); padding: clamp(5rem,10vh,8rem) var(--px); text-align: center; }
+    .pq blockquote { max-width: 60ch; margin: 0 auto; }
+    .pq-text {
+      font-family: 'Libre Baskerville',serif; font-style: italic;
+      font-size: clamp(1.4rem,2.8vw,2.3rem); line-height: 1.35;
+      color: var(--navy); margin-bottom: 1.5rem;
+    }
+    .pq-text::before { content: '\201C'; }
+    .pq-text::after  { content: '\201D'; }
+    .pq-cite { font-size: .88rem; color: var(--grey-400);
+      text-transform: uppercase; letter-spacing: .08em; font-weight: 600; }
+
+    /* ── Chart ── */
+    .chart-sec { background: var(--navy); padding: var(--gap) var(--px); }
+    .chart-sec h2 {
+      font-family: 'Libre Baskerville',serif; font-size: var(--f-h2);
+      color: #fff; text-align: center; margin-bottom: .75rem;
+    }
+    .chart-intro { text-align: center; color: rgba(255,255,255,.55);
+      max-width: 55ch; margin: 0 auto 3.5rem; }
+
+    .chart-wrap { max-width: 760px; margin: 0 auto; }
+    .chart-group { margin-bottom: 2.5rem; }
+    .chart-group-label {
+      font-size: .7rem; text-transform: uppercase; letter-spacing: .1em;
+      color: rgba(255,255,255,.32); padding-bottom: .6rem;
+      border-bottom: 1px solid rgba(255,255,255,.1); margin-bottom: 1rem;
+    }
+    .bar-row {
+      display: grid; grid-template-columns: 180px 1fr 52px;
+      align-items: center; gap: .9rem; margin-bottom: 1rem;
+    }
+    .bar-lbl { font-size: .82rem; color: rgba(255,255,255,.7);
+      text-align: right; line-height: 1.3; }
+    .bar-track {
+      height: 28px; background: rgba(255,255,255,.08);
+      border-radius: 4px; overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%; width: 0; border-radius: 4px;
+      transition: width 1.4s cubic-bezier(0.16,1,0.3,1);
+    }
+    .bar-pct { font-size: .88rem; color: #fff; font-weight: 700; }
+
+    /* ── Articles ── */
+    .articles-sec { background: var(--cream); padding: var(--gap) var(--px); }
+    .articles-sec h2 {
+      font-family: 'Libre Baskerville',serif; font-size: var(--f-h2);
+      margin-bottom: .5rem;
+    }
+    .sec-sub { color: var(--grey-400); margin-bottom: 3rem; }
+
+    .cards-grid {
+      display: grid; grid-template-columns: repeat(2,1fr);
+      gap: 1.4rem; max-width: 980px;
+    }
+    .card {
+      background: var(--white); border-radius: 12px; padding: 1.9rem;
+      box-shadow: 0 2px 14px rgba(0,0,0,.06);
+      display: flex; flex-direction: column; gap: .7rem;
+      text-decoration: none; color: inherit;
+      transition: box-shadow .25s, transform .25s;
+    }
+    .card:hover { box-shadow: 0 8px 28px rgba(0,0,0,.12); transform: translateY(-2px); }
+    .card-type {
+      font-size: .7rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: .1em; color: var(--orange);
+    }
+    .card h3 {
+      font-family: 'Libre Baskerville',serif; font-size: 1.15rem;
+      line-height: 1.3; color: var(--navy);
+    }
+    .card p { font-size: .88rem; color: var(--grey-700); line-height: 1.6; }
+    .card-more {
+      margin-top: auto; font-size: .82rem; color: var(--orange);
+      font-weight: 600; display: flex; align-items: center; gap: .35rem;
+    }
+
+    /* ── Research papers ── */
+    .papers-sec { background: var(--white); padding: var(--gap) var(--px); }
+    .papers-sec h2 {
+      font-family: 'Libre Baskerville',serif; font-size: var(--f-h2); margin-bottom: .5rem;
+    }
+    .papers-list { max-width: 780px; list-style: none; }
+    .paper {
+      display: grid; grid-template-columns: 56px 1fr;
+      gap: 1.5rem; padding: 2rem 0;
+      border-bottom: 1px solid var(--grey-100);
+      align-items: start;
+      opacity: 0; transform: translateY(18px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+    .paper.is-visible { opacity: 1; transform: none; }
+    .paper-n {
+      font-family: 'Libre Baskerville',serif; font-size: 2.2rem;
+      font-weight: 900; color: var(--grey-100); line-height: 1;
+    }
+    .paper h3 {
+      font-family: 'Libre Baskerville',serif; font-size: 1.12rem;
+      line-height: 1.35; margin-bottom: .5rem;
+    }
+    .paper h3 a { color: var(--navy); text-decoration: none; text-underline-offset: 3px; }
+    .paper h3 a:hover { text-decoration: underline; color: var(--orange); }
+    .paper p { font-size: .88rem; color: var(--grey-700); line-height: 1.65; }
+    .paper-finding {
+      display: inline-flex; align-items: center; gap: .45rem;
+      margin-top: .8rem; font-size: .75rem; font-weight: 700;
+      color: var(--green); text-transform: uppercase; letter-spacing: .06em;
+    }
+    .paper-finding::before {
+      content: ''; width: 7px; height: 7px; border-radius: 50%;
+      background: var(--green); flex-shrink: 0;
+    }
+
+    /* ── Closing ── */
+    .closing {
+      background: var(--navy); padding: clamp(6rem,12vh,10rem) var(--px);
+      text-align: center; position: relative; overflow: hidden;
+    }
+    .closing::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(26,122,173,.25), transparent 65%);
+    }
+    .closing-inner { position: relative; max-width: 60ch; margin: 0 auto; }
+    .closing h2 {
+      font-family: 'Libre Baskerville',serif; font-size: var(--f-h2);
+      color: #fff; margin-bottom: 1.5rem; line-height: 1.2;
+    }
+    .closing p { color: rgba(255,255,255,.6); margin-bottom: 2.5rem; }
+    .cta {
+      display: inline-block; padding: .9rem 2rem; background: var(--orange);
+      color: #fff; font-weight: 700; text-decoration: none; border-radius: 6px;
+      font-size: .95rem; letter-spacing: .02em;
+      transition: background .2s, transform .2s;
+    }
+    .cta:hover { background: #b84315; transform: translateY(-1px); }
+
+    /* ── Footer ── */
+    footer {
+      background: #111820; padding: 1.75rem var(--px);
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 1rem;
+    }
+    footer p { font-size: .78rem; color: rgba(255,255,255,.32); }
+    .footer-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .footer-links a { font-size: .78rem; color: rgba(255,255,255,.42); text-decoration: none; }
+    .footer-links a:hover { color: rgba(255,255,255,.8); }
+
+    /* ── Mobile ── */
+    @media (max-width: 768px) {
+      .hero { grid-template-columns: 1fr; min-height: auto; }
+      .hero-left { min-height: 65dvh; padding-top: 6rem; }
+      .hero-right { height: 56vw; }
+
+      .stats-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+      .scrolly-grid { grid-template-columns: 1fr; padding: 0 1.25rem; }
+      .sticky-col { position: relative; top: auto; height: auto; padding-right: 0; margin-bottom: 2rem; }
+      .steps-col { padding: 0 0 3rem; }
+      .step { opacity: 1; }
+
+      .bar-row { grid-template-columns: 1fr; gap: .3rem; }
+      .bar-lbl { text-align: left; }
+
+      .cards-grid { grid-template-columns: 1fr; }
+
+      .paper { grid-template-columns: 40px 1fr; gap: 1rem; }
+      .paper-n { font-size: 1.7rem; }
+
+      footer { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+  <a href="#content" class="skip">Skip to main content</a>
+
+  <nav class="nav" aria-label="Site navigation">
+    <a href="https://www.wwtf.at" class="wwtf-logo" aria-label="WWTF — Vienna Science and Technology Fund">
+      <div class="wwtf-logo-box" aria-hidden="true">
+        <span class="wwtf-logo-letter">W</span>
+        <span class="wwtf-logo-sep"></span>
+        <span class="wwtf-logo-letter">W</span>
+        <span class="wwtf-logo-sep"></span>
+        <span class="wwtf-logo-letter">T</span>
+        <span class="wwtf-logo-sep"></span>
+        <span class="wwtf-logo-letter">F</span>
+      </div>
+      <span class="wwtf-logo-wordmark">Science<br>Intelligence</span>
+    </a>
+    <span class="nav-tag">Research Briefing</span>
+  </nav>
+
+  <main id="content">
+
+    <!-- ─── HERO ─── -->
+    <section class="hero" aria-labelledby="h1">
+      <div class="hero-left">
+        <p class="hero-eyebrow">WWTF Science Intelligence · April 2026</p>
+        <h1 id="h1" class="hero-h1">Half of What Social Science Knows May Be Wrong</h1>
+        <p class="hero-sub">The largest audit of its kind tested hundreds of published findings in the behavioural and social sciences. The results should unsettle anyone who trusts the institutions of knowledge.</p>
+        <p class="hero-date">Published 1 April 2026</p>
+      </div>
+      <div class="hero-right">
+        <img
+          src="https://www.nature.com/immersive/d42859-026-00015-y/assets/OcuxBrtqY3/nature-replication-and-reproducability-shorthand-desktop.jpg"
+          alt="A stylized illustration of a single human-like figure walking across a grid of multicoloured squares, each containing the soft silhouette of a human head — shifting position from frame to frame."
+          loading="eager" decoding="sync" width="1200" height="900">
+        <span class="hero-credit">Credit: Ibrahim Rayintakath</span>
+      </div>
+    </section>
+
+    <!-- ─── INTRO ─── -->
+    <section class="intro" aria-labelledby="intro-h">
+      <div class="prose">
+        <p>Imagine a study lands on your desk. It's been published in a respected journal. The statistics look clean. The conclusions are clear. You want to build on it, fund it, perhaps let it shape a policy decision.</p>
+        <p>Now flip a coin.</p>
+        <p>That, researchers say, is roughly the chance that the finding will survive an independent retest.</p>
+        <p>A <a href="https://www.nature.com/articles/d41586-026-00805-4">sweeping new collection of investigations</a>, published this week in <em>Nature</em> and directly relevant to the fields WWTF funds, represents the most systematic audit ever conducted of the social and behavioural sciences. Four coordinated studies probed the field's most fundamental promises: that findings can be reproduced, that conclusions hold up under different methods, and that results replicate when someone else runs the experiment from scratch.</p>
+        <p>The audit did not set out to indict science. But the picture it assembled is difficult to look away from.</p>
+        <p>Across hundreds of papers and thousands of claims, the same patterns emerged again and again: <a href="https://www.nature.com/articles/s41586-026-10203-5">data goes unshared</a>, analyses diverge in the hands of different researchers, and <a href="https://www.nature.com/articles/s41586-025-10078-y">roughly half of published results</a> evaporate when someone tries to reproduce them. Yet buried inside the same evidence is a counterargument — proof that when researchers commit to transparency, the science holds.</p>
+        <p>The replication crisis, it turns out, has a cure. The field just hasn't decided to take it.</p>
+      </div>
+    </section>
+
+    <!-- ─── STATS ─── -->
+    <section class="stats" aria-labelledby="stats-h">
+      <p id="stats-h" class="stats-eyebrow">The scope of the audit</p>
+      <div class="stats-grid">
+        <div class="stat">
+          <span class="stat-num"><span class="ctr" data-target="600">0</span></span>
+          <p class="stat-desc">Published papers put under the reproducibility microscope — across 62 journals</p>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><span class="ctr" data-target="274">0</span></span>
+          <p class="stat-desc">Individual claims retested from scratch by independent research teams</p>
+        </div>
+        <div class="stat">
+          <span class="stat-num"><span class="ctr" data-target="110">0</span></span>
+          <p class="stat-desc">Economics and political-science papers stress-tested for robustness</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── SCROLLY ─── -->
+    <section class="scrolly-wrap" aria-labelledby="scrolly-h">
+      <div class="scrolly-intro">
+        <h2 id="scrolly-h">The three tests science keeps failing</h2>
+        <p>Every published claim in the social sciences must answer three questions. They sound simple. They aren't.</p>
+      </div>
+
+      <div class="scrolly-grid">
+
+        <!-- Sticky panel -->
+        <div class="sticky-col" aria-hidden="true">
+          <div class="g-card" id="gc" data-state="0">
+            <!-- Icon: documents -->
+            <svg class="g-icon" viewBox="0 0 52 52" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="6" y="6" width="17" height="22" rx="2.5" stroke="rgba(255,255,255,.35)" stroke-width="1.8"/>
+              <rect x="29" y="6" width="17" height="22" rx="2.5" stroke="rgba(255,255,255,.35)" stroke-width="1.8"/>
+              <line x1="26" y1="28" x2="26" y2="40" stroke="rgba(255,255,255,.25)" stroke-width="1.8" stroke-dasharray="3.5 2.5"/>
+              <circle cx="26" cy="44" r="3.5" fill="rgba(230,168,32,.85)"/>
+            </svg>
+            <div class="g-num" id="g-num">~50<span class="pct">%</span></div>
+            <div class="g-label" id="g-label">of results are exactly reproducible</div>
+            <div class="g-sub"  id="g-sub">from 600 papers across 62 journals</div>
+          </div>
+        </div>
+
+        <!-- Steps -->
+        <div class="steps-col" id="steps">
+
+          <div class="step is-active" data-step="0">
+            <span class="step-tag">Test 1: Reproducibility</span>
+            <h3>Give someone your data. Can they get your answer?</h3>
+            <p>Math doesn't lie. Two and two should make four regardless of who does the arithmetic. So when investigators obtained the raw data from 600 published papers — the spreadsheets, the code, the files behind the conclusions — they expected the results to follow.</p>
+            <p>They didn't. Not reliably.</p>
+            <p>Only about half produced findings that could be reproduced exactly. The culprit, more often than fraud or faulty logic, was silence: most researchers had never shared their materials at all. Untested by design.</p>
+            <div class="step-kpi">
+              <span class="step-kpi-n">~50%</span>
+              <span class="step-kpi-t">of results held up when investigators ran the original data themselves</span>
+            </div>
+          </div>
+
+          <div class="step" data-step="1">
+            <span class="step-tag">Test 2: Analytical Robustness</span>
+            <h3>Hand the same data to different scientists. Do they agree?</h3>
+            <p>Now imagine a different kind of test. Same dataset. Different hands.</p>
+            <p>Researchers gave 100 published studies to multiple independent analyst teams, each free to make their own methodological calls — which variables to control for, which observations to exclude, how to handle outliers. Every choice was defensible. None were identical.</p>
+            <p>The conclusions diverged. Sometimes sharply. "The same data can tell different stories," one scientist involved in the project said, "depending on how you look at it." In a field where no single analysis is mandatory, that variability rarely gets disclosed — or even noticed.</p>
+            <div class="step-kpi">
+              <span class="step-kpi-n">100</span>
+              <span class="step-kpi-t">studies reanalysed — analyst teams often reached different conclusions from identical data</span>
+            </div>
+          </div>
+
+          <div class="step" data-step="2">
+            <span class="step-tag">Test 3: Replicability</span>
+            <h3>Run the whole experiment again. Does it still work?</h3>
+            <p>This is the hardest test — and the one that matters most. Not: can you recalculate someone's answer? But: if you go out and collect new data, independently, does the finding hold?</p>
+            <p>When researchers applied this test to 274 published claims, roughly half survived. The other half didn't.</p>
+            <p>Even the studies that made it through came back smaller. Effects that had seemed large and convincing in the original papers shrank — sometimes dramatically — when subjected to a second look. First discoveries, the data suggest, are frequently more exciting than they are true.</p>
+            <div class="step-kpi">
+              <span class="step-kpi-n">274</span>
+              <span class="step-kpi-t">claims retested — about half replicated, most with weaker effects than first reported</span>
+            </div>
+          </div>
+
+          <div class="step" data-step="3">
+            <span class="step-tag">The evidence for a fix</span>
+            <h3>One corner of science kept passing. Here's what it did differently.</h3>
+            <p>Not everything looked bleak. When investigators turned to economics and political science — fields that have long required researchers to publish their data and code — the results were strikingly different.</p>
+            <p>More than 85 percent of claims held up under computational review. Nearly three-quarters remained statistically significant when different analysts stress-tested them. The science was messier than it appeared, yes — about one in four papers contained a non-trivial coding error — but it was auditable. And what can be audited can be fixed.</p>
+            <p>Transparency is not just a scientific virtue. It turns out to be a measurable one.</p>
+            <div class="step-kpi">
+              <span class="step-kpi-n">85%</span>
+              <span class="step-kpi-t">of claims held up in fields where sharing data is the norm, not the exception</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ─── PULL QUOTE ─── -->
+    <section class="pq">
+      <blockquote cite="https://www.nature.com/articles/d41586-026-00972-4">
+        <p class="pq-text">Many results in the social sciences don't stand up to immediate scrutiny. But that's the beginning of a conversation, not the end.</p>
+        <footer>
+          <cite class="pq-cite">Brian Nosek — Psychologist &amp; reproducibility researcher</cite>
+        </footer>
+      </blockquote>
+    </section>
+
+    <!-- ─── BAR CHART ─── -->
+    <section class="chart-sec" aria-labelledby="chart-h">
+      <h2 id="chart-h">The numbers don't lie</h2>
+      <p class="chart-intro">Across three independent investigations, the same pattern held — and one set of results showed what the rest of the field could look like.</p>
+
+      <div class="chart-wrap" id="chart-wrap"
+           role="img" aria-label="Bar charts showing reproducibility, replicability and robustness rates across three major studies">
+
+        <div class="chart-group">
+          <p class="chart-group-label">Reproducibility — 600 papers, 62 journals</p>
+          <div class="bar-row">
+            <div class="bar-lbl">Exactly reproducible</div>
+            <div class="bar-track"><div class="bar-fill" data-w="50%" style="background:#e6a820;"></div></div>
+            <div class="bar-pct">~50%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-lbl">Close reproduction</div>
+            <div class="bar-track"><div class="bar-fill" data-w="74%" style="background:#f0c060;"></div></div>
+            <div class="bar-pct">~74%</div>
+          </div>
+        </div>
+
+        <div class="chart-group">
+          <p class="chart-group-label">Replicability — 274 published claims re-tested</p>
+          <div class="bar-row">
+            <div class="bar-lbl">Claims replicated</div>
+            <div class="bar-track"><div class="bar-fill" data-w="50%" style="background:var(--orange-lt);"></div></div>
+            <div class="bar-pct">~50%</div>
+          </div>
+        </div>
+
+        <div class="chart-group">
+          <p class="chart-group-label">Economics &amp; Political Science — 110 papers</p>
+          <div class="bar-row">
+            <div class="bar-lbl">Computationally reproducible</div>
+            <div class="bar-track"><div class="bar-fill" data-w="85%" style="background:#4caf85;"></div></div>
+            <div class="bar-pct">85%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-lbl">Results remain significant</div>
+            <div class="bar-track"><div class="bar-fill" data-w="72%" style="background:#3aa070;"></div></div>
+            <div class="bar-pct">72%</div>
+          </div>
+          <div class="bar-row">
+            <div class="bar-lbl">Papers with coding errors</div>
+            <div class="bar-track"><div class="bar-fill" data-w="25%" style="background:var(--red-soft);"></div></div>
+            <div class="bar-pct">~25%</div>
+          </div>
+        </div>
+
+      </div>
+
+      <details style="max-width:760px;margin:2rem auto 0;color:rgba(255,255,255,.4);font-size:.78rem;">
+        <summary style="cursor:pointer;color:rgba(255,255,255,.48);">View as table</summary>
+        <table style="margin-top:1rem;border-collapse:collapse;width:100%;color:rgba(255,255,255,.58);">
+          <thead><tr>
+            <th style="text-align:left;padding:.4rem .6rem;border-bottom:1px solid rgba(255,255,255,.1);">Metric</th>
+            <th style="padding:.4rem .6rem;border-bottom:1px solid rgba(255,255,255,.1);text-align:right;">Rate</th>
+          </tr></thead>
+          <tbody>
+            <tr><td style="padding:.4rem .6rem;">Exactly reproducible (600 papers)</td><td style="padding:.4rem .6rem;text-align:right;">~50%</td></tr>
+            <tr><td style="padding:.4rem .6rem;">Close reproduction</td><td style="padding:.4rem .6rem;text-align:right;">~74%</td></tr>
+            <tr><td style="padding:.4rem .6rem;">Claims replicated (274 tested)</td><td style="padding:.4rem .6rem;text-align:right;">~50%</td></tr>
+            <tr><td style="padding:.4rem .6rem;">Computationally reproducible (econ/polisci)</td><td style="padding:.4rem .6rem;text-align:right;">85%</td></tr>
+            <tr><td style="padding:.4rem .6rem;">Results remain significant (econ/polisci)</td><td style="padding:.4rem .6rem;text-align:right;">72%</td></tr>
+            <tr><td style="padding:.4rem .6rem;">Papers with coding errors</td><td style="padding:.4rem .6rem;text-align:right;">~25%</td></tr>
+          </tbody>
+        </table>
+      </details>
+    </section>
+
+    <!-- ─── ARTICLES ─── -->
+    <section class="articles-sec" aria-labelledby="art-h">
+      <h2 id="art-h">The Conversation</h2>
+      <p class="sec-sub">What researchers, critics, and scientists-turned-reformers are saying about the reckoning.</p>
+      <div class="cards-grid">
+        <a href="https://www.nature.com/articles/d41586-026-00955-5" class="card">
+          <span class="card-type">News</span>
+          <h3>Years of careful retesting produced an uncomfortable scorecard</h3>
+          <p>After one of the longest and most meticulously designed replication projects in history, the tally came in: roughly half of published findings didn't survive. Researchers say the point isn't to shame — it's to repair.</p>
+          <span class="card-more">Read the report →</span>
+        </a>
+        <a href="https://www.nature.com/articles/d41586-026-00972-4" class="card">
+          <span class="card-type">Comment</span>
+          <h3>The man who built a crisis — and thinks he knows how to end it</h3>
+          <p>Brian Nosek has spent his career documenting the holes in his own field's knowledge. Admitting fallibility, he argues, isn't a concession. It's the only scientifically honest position left.</p>
+          <span class="card-more">Read the essay →</span>
+        </a>
+        <a href="https://www.nature.com/articles/d41586-026-00805-4" class="card">
+          <span class="card-type">Forum</span>
+          <h3>What exactly is a "replication"? Three scientists disagree</h3>
+          <p>The question sounds technical. The answer is surprisingly contested — and reveals why the same audit can produce very different verdicts depending on who's doing the judging.</p>
+          <span class="card-more">Read the forum →</span>
+        </a>
+        <a href="https://www.nature.com/articles/d41586-026-00684-9" class="card">
+          <span class="card-type">Research Briefing</span>
+          <h3>Economics researchers played a game — and their science came out ahead</h3>
+          <p>In fields where sharing data is mandatory, the results of a massive stress test were striking: more than 85 percent held up. The lesson for other disciplines is hard to ignore.</p>
+          <span class="card-more">Read the briefing →</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- ─── RESEARCH PAPERS ─── -->
+    <section class="papers-sec" aria-labelledby="papers-h">
+      <h2 id="papers-h">The Studies</h2>
+      <p class="sec-sub">Four papers. One coordinated reckoning with what science can — and cannot — claim to know.</p>
+      <ol class="papers-list" role="list">
+        <li class="paper" data-delay="0">
+          <span class="paper-n" aria-hidden="true">01</span>
+          <div>
+            <h3><a href="https://www.nature.com/articles/s41586-026-10203-5">Investigating the reproducibility of the social and behavioural sciences</a></h3>
+            <p>Researchers requested the underlying data and code from 600 published papers across 62 journals. Only about half produced results that held up exactly — and in many cases, the materials simply weren't available to test. The study is the clearest evidence yet that transparency, not intention, is what separates reproducible science from science taken on faith.</p>
+            <span class="paper-finding">~50% exactly reproducible · 600 papers · 62 journals</span>
+          </div>
+        </li>
+        <li class="paper" data-delay="100">
+          <span class="paper-n" aria-hidden="true">02</span>
+          <div>
+            <h3><a href="https://www.nature.com/articles/s41586-025-09844-9">Investigating the analytical robustness of the social and behavioural sciences</a></h3>
+            <p>Dozens of analyst teams were given the same 100 datasets and asked to reach their own conclusions independently. What emerged was a field-wide Rorschach test: the same evidence, interpreted through different but defensible methodological lenses, frequently pointed in different directions. The implication is uncomfortable — published findings often reflect not just what the data shows, but who was looking.</p>
+            <span class="paper-finding">100 studies · Multiple analyst teams · Conclusions shift with analytical choices</span>
+          </div>
+        </li>
+        <li class="paper" data-delay="200">
+          <span class="paper-n" aria-hidden="true">03</span>
+          <div>
+            <h3><a href="https://www.nature.com/articles/s41586-025-10078-y">Investigating the replicability of the social and behavioral sciences</a></h3>
+            <p>An independent team of researchers went back to 274 published claims and ran each experiment again from the beginning — new participants, new data collection, no shortcuts. Roughly half held up. The other half didn't. And even among the survivors, the reported effects were almost always smaller than originally claimed, sometimes by a wide margin. Science, the study implies, has a systematic tendency to overstate its own discoveries.</p>
+            <span class="paper-finding">274 claims tested · ~50% replicated · Effect sizes smaller</span>
+          </div>
+        </li>
+        <li class="paper" data-delay="300">
+          <span class="paper-n" aria-hidden="true">04</span>
+          <div>
+            <h3><a href="https://www.nature.com/articles/s41586-026-10251-x">Reproducibility and robustness of economics and political science research</a></h3>
+            <p>Here is the counterargument, made in data. In economics and political science — disciplines with longstanding norms around data and code disclosure — more than 85 percent of papers held up under computational scrutiny, and nearly three-quarters remained statistically robust when different analysts stress-tested them. There were still problems: roughly one in four papers contained a non-trivial coding error. But the errors could be found, because the work could be checked. That, the authors argue, is the difference between a science that can correct itself and one that cannot.</p>
+            <span class="paper-finding">85%+ reproducible · 72% results stable · 25% had coding errors</span>
+          </div>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ─── CLOSING ─── -->
+    <section class="closing" aria-labelledby="close-h">
+      <div class="closing-inner">
+        <h2 id="close-h">The replication crisis didn't kill science. It may have saved it.</h2>
+        <p>By turning the tools of empirical inquiry back on itself, the scientific community is doing something rare in any institution: demanding proof of its own proof. The path forward is not comfortable. But it is clear.</p>
+        <a href="https://www.nature.com/collections/idajfifcfg" class="cta">Browse the full collection →</a>
+        <br><br>
+        <a href="https://www.nature.com/articles/d41586-026-00965-3" class="cta" style="background:transparent;border:1px solid rgba(255,255,255,.3);margin-top:.5rem;">Editorial: More self-reflection in research →</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer role="contentinfo">
+    <div style="display:flex;align-items:center;gap:1rem;">
+      <div class="wwtf-logo-box" style="background:rgba(255,255,255,0.12);" aria-label="WWTF">
+        <span class="wwtf-logo-letter" style="font-size:.78rem;">W</span>
+        <span class="wwtf-logo-sep"></span>
+        <span class="wwtf-logo-letter" style="font-size:.78rem;">W</span>
+        <span class="wwtf-logo-sep"></span>
+        <span class="wwtf-logo-letter" style="font-size:.78rem;">T</span>
+        <span class="wwtf-logo-sep"></span>
+        <span class="wwtf-logo-letter" style="font-size:.78rem;">F</span>
+      </div>
+      <p style="font-size:.78rem;color:rgba(255,255,255,.38);line-height:1.5;">
+        Vienna Science and Technology Fund<br>
+        Schlickgasse 3/12 · 1090 Wien · <a href="mailto:office@wwtf.at" style="color:rgba(255,255,255,.5);text-decoration:none;">office@wwtf.at</a>
+      </p>
+    </div>
+    <nav class="footer-links" aria-label="Footer links">
+      <a href="https://www.wwtf.at">wwtf.at</a>
+      <a href="https://www.wwtf.at/imprint/">Imprint</a>
+      <a href="https://www.wwtf.at/imprint/datenschutzerklaerung-und-agbs">Privacy</a>
+      <a href="https://www.wwtf.at/news/">News</a>
+    </nav>
+  </footer>
+
+  <script>
+    document.documentElement.classList.add('js-ready');
+
+    const rmq = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const rm  = rmq.matches;
+    const mob = window.innerWidth < 769;
+
+    // ── Scrolly graphic state machine ──
+    const gc    = document.getElementById('gc');
+    const gNum  = document.getElementById('g-num');
+    const gLbl  = document.getElementById('g-label');
+    const gSub  = document.getElementById('g-sub');
+
+    const states = [
+      { s:'0', num:'~50<span class="pct">%</span>', lbl:'of results are exactly reproducible',       sub:'from 600 papers across 62 journals' },
+      { s:'1', num:'100',                            lbl:'studies reanalysed by multiple analyst teams', sub:'conclusions shift with analytical choices' },
+      { s:'2', num:'~50<span class="pct">%</span>', lbl:'of claims survive independent replication',  sub:'274 published claims re-tested' },
+      { s:'3', num:'85<span class="pct">%</span>',  lbl:'computationally reproducible',               sub:'in fields with strong data-sharing norms' },
+    ];
+
+    function setGraphic(i) {
+      const st = states[i];
+      if (!st) return;
+      gc.setAttribute('data-state', st.s);
+      gNum.innerHTML = st.num;
+      gLbl.textContent = st.lbl;
+      gSub.textContent = st.sub;
+    }
+
+    if (!mob) {
+      const steps = document.querySelectorAll('.step');
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (e.isIntersecting) {
+            steps.forEach(s => s.classList.remove('is-active'));
+            e.target.classList.add('is-active');
+            setGraphic(+e.target.dataset.step);
+          }
+        });
+      }, { threshold: 0.55, rootMargin: '-10% 0px -10% 0px' });
+      steps.forEach(s => io.observe(s));
+    }
+
+    // ── Counter animation ──
+    function runCounter(el) {
+      const target = +el.dataset.target;
+      if (rm) { el.textContent = target.toLocaleString(); return; }
+      const dur = 1800, t0 = performance.now();
+      (function tick(now) {
+        const p = Math.min((now - t0) / dur, 1);
+        const e = 1 - Math.pow(1 - p, 3);
+        el.textContent = Math.round(e * target).toLocaleString();
+        if (p < 1) requestAnimationFrame(tick);
+      })(t0);
+    }
+
+    const cio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) { runCounter(e.target); cio.unobserve(e.target); }
+      });
+    }, { threshold: mob ? 0.4 : 0.6 });
+    document.querySelectorAll('.ctr').forEach(el => cio.observe(el));
+
+    // ── Bar chart animation ──
+    const bars = document.querySelectorAll('.bar-fill');
+    bars.forEach(b => { b.style.width = '0'; }); // ensure start at 0
+
+    const bio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.querySelectorAll('.bar-fill').forEach(b => {
+            if (rm) { b.style.transition = 'none'; }
+            b.style.width = b.dataset.w;
+          });
+          bio.unobserve(e.target);
+        }
+      });
+    }, { threshold: mob ? 0.15 : 0.25 });
+
+    const cw = document.getElementById('chart-wrap');
+    if (cw) bio.observe(cw);
+
+    // ── Paper reveal ──
+    const pio = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          const delay = +e.target.dataset.delay || 0;
+          setTimeout(() => e.target.classList.add('is-visible'), delay);
+          pio.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    document.querySelectorAll('.paper').forEach(p => pio.observe(p));
+  </script>
+</body>
+</html>
