@@ -1,0 +1,1676 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vienna Research Observatory — Week of 30 March–6 April 2026 · WWTF Science Briefing</title>
+  <meta name="description" content="Two companion papers in Nature — both from Vienna, both published the same morning — mounted the most ambitious audit of social science ever attempted.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy:        #0d5f7a;
+      --navy-mid:    #0a4f67;
+      --cream:       #f0f0ee;
+      --white:       #ffffff;
+      --orange:      #1a7aad;
+      --orange-lt:   #5aafd4;
+      --gold:        #4fa8cc;
+      --red-soft:    #c0392b;
+      --grey-50:     #f4f4f2;
+      --grey-100:    #e2e2e0;
+      --grey-400:    #8a8a88;
+      --grey-700:    #4a4a48;
+      --text:        #1a1917;
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Source Sans 3', sans-serif;
+      color: var(--text);
+      background: var(--white);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* Skip link */
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      background: var(--navy);
+      color: var(--white);
+      padding: 0.5rem 1rem;
+      border-radius: 0 0 4px 4px;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      text-decoration: none;
+      z-index: 1000;
+      transition: top 0.2s;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* NAV */
+    .nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.75rem 2rem;
+      background: rgba(13, 95, 122, 0.96);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .wwtf-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+      color: var(--white);
+    }
+
+    .wwtf-logo-box {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      background: var(--white);
+      color: var(--navy);
+      padding: 0.25rem 0.4rem;
+      border-radius: 3px;
+    }
+
+    .wwtf-logo-letter {
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 700;
+      font-size: 1rem;
+      line-height: 1;
+      color: var(--navy);
+    }
+
+    .wwtf-logo-sep {
+      display: inline-block;
+      width: 1px;
+      height: 0.8rem;
+      background: var(--navy);
+      margin: 0 0.2rem;
+      opacity: 0.4;
+    }
+
+    .wwtf-logo-wordmark {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      line-height: 1.2;
+      color: var(--white);
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+    }
+
+    .nav-tag {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--orange-lt);
+    }
+
+    /* HERO */
+    .hero {
+      height: 100dvh;
+      background: linear-gradient(160deg, #0d5f7a 0%, #0a3d52 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 6rem 2rem 4rem;
+      position: relative;
+    }
+
+    @supports not (height: 100dvh) {
+      .hero {
+        height: 100vh;
+      }
+    }
+
+    .hero-eyebrow {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--orange-lt);
+      margin-bottom: 1.25rem;
+    }
+
+    .hero h1 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.15;
+      max-width: 820px;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-subhead {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: clamp(1rem, 2vw, 1.25rem);
+      font-weight: 300;
+      color: rgba(255,255,255,0.82);
+      max-width: 620px;
+      line-height: 1.65;
+      margin-bottom: 3rem;
+    }
+
+    .scroll-cue {
+      position: absolute;
+      bottom: 2.5rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: rgba(255,255,255,0.5);
+      font-size: 0.7rem;
+      font-family: 'Source Sans 3', sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .scroll-arrow {
+      width: 24px;
+      height: 24px;
+      border-right: 2px solid rgba(255,255,255,0.4);
+      border-bottom: 2px solid rgba(255,255,255,0.4);
+      transform: rotate(45deg);
+      animation: bounce 2s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); }
+      50% { transform: rotate(45deg) translateY(5px); }
+    }
+
+    /* STATS STRIP */
+    .stats-strip {
+      background: var(--navy-mid);
+      padding: 4rem 2rem;
+    }
+
+    .stats-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat-item {}
+
+    .stat-number {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(3rem, 6vw, 5rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1;
+      display: block;
+    }
+
+    .stat-label {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 400;
+      color: var(--orange-lt);
+      margin-top: 0.5rem;
+      letter-spacing: 0.02em;
+    }
+
+    /* SCROLLY SECTION */
+    .scrolly-section {
+      background: var(--grey-50);
+      padding: 0;
+    }
+
+    .scrolly-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      position: relative;
+    }
+
+    .scrolly-sticky {
+      position: sticky;
+      top: 80px;
+      height: calc(100vh - 80px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 2.5rem;
+    }
+
+    .institution-chart {
+      width: 100%;
+      max-width: 400px;
+    }
+
+    .chart-title {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--grey-400);
+      margin-bottom: 1.5rem;
+    }
+
+    .chart-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .chart-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      opacity: 0.25;
+      transition: opacity 0.5s ease;
+    }
+
+    .chart-row.visible {
+      opacity: 1;
+    }
+
+    .chart-row.highlighted {
+      opacity: 1;
+    }
+
+    .chart-row.dimmed {
+      opacity: 0.35;
+    }
+
+    .chart-row-label {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+
+    .chart-institution {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--grey-700);
+    }
+
+    .chart-count {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .chart-bar-track {
+      height: 8px;
+      background: var(--grey-100);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .chart-bar-fill {
+      height: 100%;
+      background: var(--navy);
+      border-radius: 4px;
+      width: 0%;
+      transition: width 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .chart-row.highlighted .chart-bar-fill {
+      background: var(--orange);
+    }
+
+    .chart-row[data-institution="tu"] .chart-bar-fill,
+    .chart-row.tu-highlight .chart-bar-fill {
+      background: var(--gold);
+    }
+
+    .scrolly-steps {
+      padding: 8rem 2.5rem 8rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .step-card {
+      padding: 3rem 0;
+      min-height: 70vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .step-number {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .step-card h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1.4rem, 2.5vw, 1.9rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+
+    .step-card p {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 1rem;
+      color: var(--grey-700);
+      line-height: 1.75;
+      max-width: 500px;
+    }
+
+    /* FIELD BREAKDOWN */
+    .field-breakdown {
+      background: var(--cream);
+      padding: 6rem 2rem;
+    }
+
+    .section-inner {
+      max-width: 860px;
+      margin: 0 auto;
+    }
+
+    .section-eyebrow {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: 700;
+      color: var(--navy);
+      line-height: 1.2;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 1rem;
+      color: var(--grey-400);
+      margin-bottom: 3rem;
+    }
+
+    .field-bars {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .field-row {}
+
+    .field-row-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 0.4rem;
+    }
+
+    .field-name {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--grey-700);
+    }
+
+    .field-count {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--text);
+    }
+
+    .field-track {
+      height: 12px;
+      background: var(--grey-100);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .field-fill {
+      height: 100%;
+      border-radius: 6px;
+      width: 0%;
+      transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+
+    .field-fill.health   { background: var(--navy); }
+    .field-fill.physical { background: var(--orange); }
+    .field-fill.life     { background: #2d7d5b; }
+    .field-fill.social   { background: var(--gold); }
+
+    .field-note {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.9rem;
+      color: var(--grey-400);
+      line-height: 1.65;
+      border-left: 3px solid var(--grey-100);
+      padding-left: 1rem;
+    }
+
+    /* PULL QUOTE */
+    .pull-quote-section {
+      background: linear-gradient(160deg, #0d5f7a 0%, #0a3d52 100%);
+      padding: 7rem 2rem;
+      text-align: center;
+    }
+
+    .pull-quote-mark {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 6rem;
+      line-height: 0.5;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: block;
+      opacity: 0.5;
+    }
+
+    .pull-quote-text {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1.3rem, 2.5vw, 2rem);
+      font-style: italic;
+      color: var(--white);
+      line-height: 1.5;
+      max-width: 720px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .pull-quote-attr {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--orange-lt);
+    }
+
+    /* PAPERS SECTION */
+    .papers-section {
+      background: var(--white);
+      padding: 6rem 2rem;
+    }
+
+    .papers-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+
+    .paper-card {
+      border: 1px solid var(--grey-100);
+      border-radius: 8px;
+      padding: 2rem;
+      background: var(--white);
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    .paper-card:hover {
+      box-shadow: 0 8px 32px rgba(13,95,122,0.12);
+      transform: translateY(-2px);
+    }
+
+    .paper-card.primary {
+      border-top: 3px solid var(--navy);
+      grid-column: 1 / -1;
+    }
+
+    .paper-tag {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--navy);
+      padding: 0.2rem 0.5rem;
+      border-radius: 3px;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+
+    .paper-card.secondary .paper-tag {
+      background: var(--orange);
+    }
+
+    .paper-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1rem, 1.5vw, 1.2rem);
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.35;
+      margin-bottom: 0.5rem;
+    }
+
+    .paper-card.primary .paper-title {
+      font-size: clamp(1.2rem, 2vw, 1.5rem);
+    }
+
+    .paper-meta {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.8rem;
+      color: var(--grey-400);
+      margin-bottom: 0.75rem;
+      line-height: 1.5;
+    }
+
+    .paper-date {
+      font-weight: 600;
+      color: var(--grey-700);
+    }
+
+    .paper-desc {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.925rem;
+      color: var(--grey-700);
+      line-height: 1.7;
+      margin-bottom: 1.25rem;
+    }
+
+    .paper-doi {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: var(--orange);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+    }
+
+    .paper-doi:hover {
+      color: var(--navy);
+      text-decoration: underline;
+    }
+
+    .paper-doi::after {
+      content: '↗';
+      font-size: 0.7rem;
+    }
+
+    .wwtf-papers-subtitle {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 1.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 2px solid var(--grey-100);
+    }
+
+    .wwtf-papers-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+    }
+
+    .mini-card {
+      background: var(--grey-50);
+      border-radius: 6px;
+      padding: 1.25rem;
+      border: 1px solid var(--grey-100);
+    }
+
+    .mini-card-tag {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .mini-card-title {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 0.4rem;
+    }
+
+    .mini-card-journal {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.75rem;
+      color: var(--grey-400);
+    }
+
+    /* EU GRANTS TIMELINE */
+    .grants-section {
+      background: var(--grey-50);
+      padding: 6rem 0 6rem 2rem;
+      overflow: hidden;
+    }
+
+    .grants-header {
+      max-width: 860px;
+      margin: 0 auto 2.5rem;
+      padding-right: 2rem;
+    }
+
+    .timeline-scroll {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding: 0.5rem 2rem 2rem;
+      scrollbar-width: thin;
+      scrollbar-color: var(--grey-100) transparent;
+    }
+
+    .timeline-scroll::-webkit-scrollbar {
+      height: 4px;
+    }
+
+    .timeline-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .timeline-scroll::-webkit-scrollbar-thumb {
+      background: var(--grey-100);
+      border-radius: 2px;
+    }
+
+    .timeline-card {
+      flex: 0 0 300px;
+      scroll-snap-align: start;
+      background: var(--white);
+      border-radius: 8px;
+      padding: 1.75rem;
+      border: 1px solid var(--grey-100);
+      border-top: 3px solid var(--navy);
+      position: relative;
+    }
+
+    .timeline-date {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .timeline-type {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--white);
+      background: var(--orange);
+      padding: 0.15rem 0.4rem;
+      border-radius: 2px;
+      display: inline-block;
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-title {
+      font-family: 'Libre Baskerville', serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.4;
+      margin-bottom: 0.75rem;
+    }
+
+    .timeline-inst {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-grant {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.72rem;
+      color: var(--grey-400);
+      font-variant-numeric: tabular-nums;
+    }
+
+    /* WWTF PORTFOLIO */
+    .portfolio-section {
+      background: linear-gradient(160deg, #0d5f7a 0%, #0a3d52 100%);
+      padding: 6rem 2rem;
+    }
+
+    .portfolio-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .portfolio-stat-number {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(2.5rem, 5vw, 4rem);
+      font-weight: 700;
+      color: var(--white);
+      display: block;
+      line-height: 1;
+    }
+
+    .portfolio-stat-label {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.875rem;
+      color: var(--orange-lt);
+      margin-top: 0.5rem;
+    }
+
+    .portfolio-note {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 1rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.75;
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    .portfolio-note strong {
+      color: var(--white);
+    }
+
+    /* CLOSING */
+    .closing-section {
+      background: linear-gradient(160deg, #0a3d52 0%, #071f2a 100%);
+      padding: 7rem 2rem;
+      text-align: center;
+    }
+
+    .closing-section h2 {
+      font-family: 'Libre Baskerville', serif;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      color: var(--white);
+      line-height: 1.2;
+      margin-bottom: 1.5rem;
+      max-width: 720px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .closing-text {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.75);
+      line-height: 1.75;
+      max-width: 640px;
+      margin: 0 auto 2.5rem;
+    }
+
+    .cta-button {
+      display: inline-block;
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.9rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--navy);
+      background: var(--white);
+      padding: 0.85rem 2rem;
+      border-radius: 4px;
+      text-decoration: none;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .cta-button:hover {
+      background: var(--cream);
+      transform: translateY(-1px);
+    }
+
+    /* FOOTER */
+    footer {
+      background: #071f2a;
+      padding: 3rem 2rem;
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .footer-brand {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+    }
+
+    .footer-brand .wwtf-logo-box {
+      background: rgba(255,255,255,0.15);
+      flex-shrink: 0;
+      padding: 0.3rem 0.5rem;
+    }
+
+    .footer-brand .wwtf-logo-letter {
+      color: var(--white);
+      font-size: 0.8rem;
+    }
+
+    .footer-brand .wwtf-logo-sep {
+      background: rgba(255,255,255,0.3);
+    }
+
+    .footer-brand p {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      font-family: 'Source Sans 3', sans-serif;
+      font-size: 0.8rem;
+      color: rgba(255,255,255,0.5);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-links a:hover {
+      color: var(--white);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      .nav {
+        padding: 0.75rem 1rem;
+      }
+
+      .nav-tag {
+        display: none;
+      }
+
+      .stats-inner {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+
+      .scrolly-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .scrolly-sticky {
+        position: relative;
+        top: auto;
+        height: auto;
+        padding: 3rem 1.5rem 1.5rem;
+      }
+
+      .scrolly-steps {
+        padding: 1rem 1.5rem 4rem;
+      }
+
+      .step-card {
+        min-height: auto;
+        padding: 2rem 0;
+      }
+
+      .papers-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .paper-card.primary {
+        grid-column: auto;
+      }
+
+      .portfolio-stats {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .grants-section {
+        padding-left: 1rem;
+      }
+
+      .timeline-card {
+        flex: 0 0 260px;
+      }
+
+      footer {
+        flex-direction: column;
+        gap: 1.5rem;
+      }
+    }
+
+    /* REDUCED MOTION */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+
+      .scroll-arrow {
+        animation: none;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .chart-bar-fill,
+      .field-fill {
+        transition: none;
+        width: var(--target-width, 0%) !important;
+      }
+
+      .chart-row {
+        opacity: 1 !important;
+      }
+    }
+
+    /* JS READY STATE */
+    html:not(.js-ready) .chart-row {
+      opacity: 1;
+    }
+
+    html:not(.js-ready) .chart-bar-fill {
+      width: var(--target-width, 0%);
+    }
+
+    html:not(.js-ready) .field-fill {
+      width: var(--target-width, 0%);
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <nav class="nav" aria-label="Site navigation">
+    <a href="https://www.wwtf.at" class="wwtf-logo">
+      <div class="wwtf-logo-box">
+        <span class="wwtf-logo-letter">W</span><span class="wwtf-logo-sep"></span>
+        <span class="wwtf-logo-letter">W</span><span class="wwtf-logo-sep"></span>
+        <span class="wwtf-logo-letter">T</span><span class="wwtf-logo-sep"></span>
+        <span class="wwtf-logo-letter">F</span>
+      </div>
+      <span class="wwtf-logo-wordmark">Science<br>Briefing</span>
+    </a>
+    <span class="nav-tag">Research Briefing</span>
+  </nav>
+
+  <main id="main-content">
+
+    <!-- HERO -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <p class="hero-eyebrow">WWTF Science Briefing · Week of 30 March – 6 April 2026</p>
+      <h1 id="hero-heading">Vienna Published the Week's Most-Cited Paper on Scientific Truth. Twice.</h1>
+      <p class="hero-subhead">Two companion papers in Nature — both from Vienna, both published the same morning — mounted the most ambitious audit of social science ever attempted.</p>
+      <div class="scroll-cue" aria-hidden="true">
+        <div class="scroll-arrow"></div>
+        <span>Scroll</span>
+      </div>
+    </section>
+
+    <!-- STATS STRIP -->
+    <section class="stats-strip" aria-labelledby="stats-heading">
+      <h2 id="stats-heading" class="sr-only">Key figures this week</h2>
+      <div class="stats-inner">
+        <div class="stat-item">
+          <span class="stat-number" data-counter="360" data-duration="1800">0</span>
+          <p class="stat-label">Vienna papers indexed this week</p>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-counter="2" data-duration="1800">0</span>
+          <p class="stat-label">Companion Nature papers from Uni Wien</p>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number" data-counter="6" data-duration="1800">0</span>
+          <p class="stat-label">New EU grants in the pipeline</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCROLLY SECTION -->
+    <section class="scrolly-section" aria-labelledby="scrolly-heading">
+      <div class="scrolly-inner">
+        <div class="scrolly-sticky" aria-hidden="true">
+          <div class="institution-chart">
+            <p class="chart-title">Papers by Institution · Week 30 Mar–6 Apr</p>
+            <div class="chart-bars" id="institution-chart">
+              <div class="chart-row" data-institution="uni-wien" id="bar-uni-wien">
+                <div class="chart-row-label">
+                  <span class="chart-institution">Uni Wien</span>
+                  <span class="chart-count">137</span>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill" style="--target-width: 100%"></div>
+                </div>
+              </div>
+              <div class="chart-row" data-institution="meduni-wien" id="bar-meduni-wien">
+                <div class="chart-row-label">
+                  <span class="chart-institution">MedUni Wien</span>
+                  <span class="chart-count">137</span>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill" style="--target-width: 100%"></div>
+                </div>
+              </div>
+              <div class="chart-row" data-institution="tu" id="bar-tu-wien">
+                <div class="chart-row-label">
+                  <span class="chart-institution">TU Wien</span>
+                  <span class="chart-count">53</span>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill" style="--target-width: 38.7%"></div>
+                </div>
+              </div>
+              <div class="chart-row" data-institution="boku" id="bar-boku">
+                <div class="chart-row-label">
+                  <span class="chart-institution">BOKU</span>
+                  <span class="chart-count">18</span>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill" style="--target-width: 13.1%"></div>
+                </div>
+              </div>
+              <div class="chart-row" data-institution="oeaw" id="bar-oeaw">
+                <div class="chart-row-label">
+                  <span class="chart-institution">OeAW</span>
+                  <span class="chart-count">16</span>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill" style="--target-width: 11.7%"></div>
+                </div>
+              </div>
+              <div class="chart-row" data-institution="wu-wien" id="bar-wu-wien">
+                <div class="chart-row-label">
+                  <span class="chart-institution">WU Wien</span>
+                  <span class="chart-count">11</span>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill" style="--target-width: 8%"></div>
+                </div>
+              </div>
+              <div class="chart-row" data-institution="ist" id="bar-ist">
+                <div class="chart-row-label">
+                  <span class="chart-institution">IST Austria</span>
+                  <span class="chart-count">6</span>
+                </div>
+                <div class="chart-bar-track">
+                  <div class="chart-bar-fill" style="--target-width: 4.4%"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="scrolly-steps">
+          <div class="step-card" data-step="0" id="step-0">
+            <p class="step-number">01 — Overview</p>
+            <h2 id="scrolly-heading">360 papers. One week.</h2>
+            <p>Vienna science rarely makes this kind of noise in a single week. Between March 30 and April 6, databases indexed 360 papers from Vienna-based researchers. That's roughly a third more than the weekly baseline of around 270. Some of that is catch-up indexing. But not all of it.</p>
+          </div>
+          <div class="step-card" data-step="1" id="step-1">
+            <p class="step-number">02 — Institution</p>
+            <h2>A statistical dead heat</h2>
+            <p>In normal weeks, one institution dominates. This week, two tied. Uni Wien and MedUni Wien both produced exactly 137 indexed papers — a result so unusual that analysts flagged it immediately. It likely reflects the shared authorship on the two major Nature papers, which list researchers from both institutions.</p>
+          </div>
+          <div class="step-card" data-step="2" id="step-2">
+            <p class="step-number">03 — Funding</p>
+            <h2>TU Wien wins big in Brussels</h2>
+            <p>TU Wien produced 53 papers this week — but the real news from Mariahilfer Straße is the funding. Two new European grants landed in the pipeline: an ERC Advanced Grant worth several years of support for superconductor modeling, and an MSCA Postdoctoral Fellowship for quantum computing. Brussels, it seems, has been paying attention.</p>
+          </div>
+          <div class="step-card" data-step="3" id="step-3">
+            <p class="step-number">04 — Long tail</p>
+            <h2>The long tail of Vienna research</h2>
+            <p>Beyond the top three: BOKU (18 papers), OeAW (16), WU Wien (11), IST Austria (6). IST's number looks small but represents high-impact output from a campus of 700 scientists. A physics/ML paper on calorimeter simulation from OeAW drew attention outside the field.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FIELD BREAKDOWN -->
+    <section class="field-breakdown" aria-labelledby="field-heading">
+      <div class="section-inner">
+        <p class="section-eyebrow">By Field</p>
+        <h2 class="section-title" id="field-heading">What Vienna Researched This Week</h2>
+        <p class="section-subtitle">360 papers, by broad field</p>
+
+        <div class="field-bars" id="field-bars">
+          <div class="field-row">
+            <div class="field-row-meta">
+              <span class="field-name">Health Sciences</span>
+              <span class="field-count">114</span>
+            </div>
+            <div class="field-track">
+              <div class="field-fill health" style="--target-width: 100%"></div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-row-meta">
+              <span class="field-name">Physical Sciences</span>
+              <span class="field-count">106</span>
+            </div>
+            <div class="field-track">
+              <div class="field-fill physical" style="--target-width: 93%"></div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-row-meta">
+              <span class="field-name">Life Sciences</span>
+              <span class="field-count">46</span>
+            </div>
+            <div class="field-track">
+              <div class="field-fill life" style="--target-width: 40.4%"></div>
+            </div>
+          </div>
+          <div class="field-row">
+            <div class="field-row-meta">
+              <span class="field-name">Social Sciences</span>
+              <span class="field-count">44</span>
+            </div>
+            <div class="field-track">
+              <div class="field-fill social" style="--target-width: 38.6%"></div>
+            </div>
+          </div>
+        </div>
+
+        <p class="field-note">Health Sciences edging ahead of Physical Sciences is a reversal from the baseline pattern — almost certainly driven by the MedUni Wien/Uni Wien co-authored Nature papers, which classified across health and social science fields.</p>
+      </div>
+    </section>
+
+    <!-- PULL QUOTE -->
+    <section class="pull-quote-section" aria-labelledby="quote-heading">
+      <span class="pull-quote-mark" aria-hidden="true">"</span>
+      <blockquote>
+        <p class="pull-quote-text" id="quote-heading">Two companion pieces, published the same day in Nature, from the same city — this is what coordinated, large-scale science looks like.</p>
+        <footer class="pull-quote-attr">— Vienna Research Observatory, April 2026</footer>
+      </blockquote>
+    </section>
+
+    <!-- PAPERS SECTION -->
+    <section class="papers-section" aria-labelledby="papers-heading">
+      <div class="section-inner">
+        <p class="section-eyebrow">Featured Research</p>
+        <h2 class="section-title" id="papers-heading">The Papers That Defined the Week</h2>
+
+        <div class="papers-grid">
+          <article class="paper-card primary" aria-labelledby="paper-1-title">
+            <span class="paper-tag">Nature · Social Science</span>
+            <h3 class="paper-title" id="paper-1-title">Investigating the analytical robustness of the social and behavioural sciences</h3>
+            <p class="paper-meta">
+              Balazs Aczel, Barnabas Szaszi, Felix Holzmeister et al. — Uni Wien, MedUni Wien, WU Wien<br>
+              <span class="paper-date">April 1, 2026</span>
+            </p>
+            <p class="paper-desc">5 citations in 5 days. The study tested whether the same data, analyzed by different teams using different methods, produces different conclusions. It does — and the implications reach into every empirical field.</p>
+            <a href="https://doi.org/10.1038/s41586-025-09844-9" class="paper-doi" target="_blank" rel="noopener noreferrer">doi.org/10.1038/s41586-025-09844-9</a>
+          </article>
+
+          <article class="paper-card secondary" aria-labelledby="paper-2-title">
+            <span class="paper-tag">Nature · Replication</span>
+            <h3 class="paper-title" id="paper-2-title">Investigating the replicability of the social and behavioural sciences</h3>
+            <p class="paper-meta">
+              Large multi-lab consortium incl. Uni Wien<br>
+              <span class="paper-date">April 1, 2026</span>
+            </p>
+            <p class="paper-desc">The companion paper asked the harder question: not whether the analysis holds, but whether the finding itself can be reproduced from scratch by a different lab. The answer, as with so much in social science, is: sometimes.</p>
+            <a href="https://doi.org/10.1038/s41586-025-10078-y" class="paper-doi" target="_blank" rel="noopener noreferrer">doi.org/10.1038/s41586-025-10078-y</a>
+          </article>
+        </div>
+
+        <h3 class="wwtf-papers-subtitle">More from WWTF-funded researchers</h3>
+        <div class="wwtf-papers-grid">
+          <div class="mini-card">
+            <p class="mini-card-tag">VRG22-007 · Ecology</p>
+            <p class="mini-card-title">Mycorrhizal ecology and forest symbiosis networks</p>
+            <p class="mini-card-journal">New Phytologist</p>
+          </div>
+          <div class="mini-card">
+            <p class="mini-card-tag">ICT20079 · Complexity</p>
+            <p class="mini-card-title">Inequality dynamics in complex adaptive systems</p>
+            <p class="mini-card-journal">npj Complexity</p>
+          </div>
+          <div class="mini-card">
+            <p class="mini-card-tag">ESS22-040 · Economics</p>
+            <p class="mini-card-title">Improved economic forecasting under uncertainty</p>
+            <p class="mini-card-journal">Economic Letters</p>
+          </div>
+          <div class="mini-card">
+            <p class="mini-card-tag">LS21-015 · Genomics</p>
+            <p class="mini-card-title">BAF chromatin remodeling and transcriptional control</p>
+            <p class="mini-card-journal">Nature Cell Biology</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- EU GRANTS TIMELINE -->
+    <section class="grants-section" aria-labelledby="grants-heading">
+      <div class="grants-header">
+        <p class="section-eyebrow">European Funding</p>
+        <h2 class="section-title" id="grants-heading">New EU Funding in the Pipeline</h2>
+        <p class="section-subtitle">Six grants entering the system — scroll to explore</p>
+      </div>
+
+      <div class="timeline-scroll" role="list" aria-label="EU grants timeline">
+        <div class="timeline-card" role="listitem">
+          <p class="timeline-date">Jan 2026</p>
+          <span class="timeline-type">ERC Advanced Grant</span>
+          <h3 class="timeline-title">Realistic modeling of unconventional superconductors</h3>
+          <p class="timeline-inst">TU Wien</p>
+          <p class="timeline-grant">Grant: 101201037 · Jan 2026–Dec 2029</p>
+        </div>
+
+        <div class="timeline-card" role="listitem">
+          <p class="timeline-date">Jan 2026</p>
+          <span class="timeline-type">MSCA Doctoral Network</span>
+          <h3 class="timeline-title">Secure AI and Digital Twin for Smart Internet-of-Energy</h3>
+          <p class="timeline-inst">TU Wien</p>
+          <p class="timeline-grant">Grant: 101227573</p>
+        </div>
+
+        <div class="timeline-card" role="listitem">
+          <p class="timeline-date">Apr 2026</p>
+          <span class="timeline-type">ERC Grant</span>
+          <h3 class="timeline-title">Hypothalamic control of behavioral and physiological adaptations to stress</h3>
+          <p class="timeline-inst">AT participant</p>
+          <p class="timeline-grant">Grant: 101222107</p>
+        </div>
+
+        <div class="timeline-card" role="listitem">
+          <p class="timeline-date">Sep 2026</p>
+          <span class="timeline-type">ERC Grant</span>
+          <h3 class="timeline-title">New Paradigm of Stellar Convection</h3>
+          <p class="timeline-inst">AT participant</p>
+          <p class="timeline-grant">Grant: 101199531</p>
+        </div>
+
+        <div class="timeline-card" role="listitem">
+          <p class="timeline-date">Sep 2026</p>
+          <span class="timeline-type">ERC Grant</span>
+          <h3 class="timeline-title">Enabling multi-messenger science with black hole binaries</h3>
+          <p class="timeline-inst">AT participant</p>
+          <p class="timeline-grant">Grant: 101200084</p>
+        </div>
+
+        <div class="timeline-card" role="listitem">
+          <p class="timeline-date">Sep 2026</p>
+          <span class="timeline-type">MSCA Postdoctoral</span>
+          <h3 class="timeline-title">Efficient algorithmic methods for preparing large resource states with neutral atoms</h3>
+          <p class="timeline-inst">TU Wien</p>
+          <p class="timeline-grant">Grant: 101209656 · Starts Sep 2026</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- WWTF PORTFOLIO -->
+    <section class="portfolio-section" aria-labelledby="portfolio-heading">
+      <div class="section-inner" style="max-width: 860px;">
+        <p class="section-eyebrow" style="color: var(--orange-lt);">WWTF Portfolio</p>
+        <h2 class="section-title" id="portfolio-heading" style="color: var(--white); margin-bottom: 3rem;">WWTF 2026 Portfolio at a Glance</h2>
+
+        <div class="portfolio-stats">
+          <div>
+            <span class="portfolio-stat-number" data-counter="16" data-duration="1800">0</span>
+            <p class="portfolio-stat-label">Active projects in 2026</p>
+          </div>
+          <div>
+            <span class="portfolio-stat-number" data-prefix="€" data-counter-text="11.2M">€0</span>
+            <p class="portfolio-stat-label">Committed this year</p>
+          </div>
+          <div>
+            <span class="portfolio-stat-number" data-counter="12" data-duration="1800">0</span>
+            <p class="portfolio-stat-label">ICT25 projects underway</p>
+          </div>
+        </div>
+
+        <p class="portfolio-note">No new projects were added to the WWTF portfolio this week. The current cohort spans ICT, life sciences, and environmental research. The most recently formalized project — <strong>ICT25-081</strong>, a cryptography project led by Azari — formally begins October 1.</p>
+      </div>
+    </section>
+
+    <!-- CLOSING -->
+    <section class="closing-section" aria-labelledby="closing-heading">
+      <h2 id="closing-heading">FWF Is Quiet. Vienna Is Not.</h2>
+      <p class="closing-text">The domestic grant pipeline has been silent since March 23, with the next FWF batch expected sometime in April. But this week showed what Vienna's research institutions can do in the meanwhile — and what happens when large-scale, international collaboration is rooted in a single city.</p>
+      <a href="https://www.wwtf.at" class="cta-button" target="_blank" rel="noopener noreferrer">Explore WWTF Projects →</a>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="footer-brand">
+      <div class="wwtf-logo-box">
+        <span class="wwtf-logo-letter">W</span><span class="wwtf-logo-sep"></span>
+        <span class="wwtf-logo-letter">W</span><span class="wwtf-logo-sep"></span>
+        <span class="wwtf-logo-letter">T</span><span class="wwtf-logo-sep"></span>
+        <span class="wwtf-logo-letter">F</span>
+      </div>
+      <p>Vienna Science and Technology Fund<br>Schlickgasse 3/12 · 1090 Wien · office@wwtf.at</p>
+    </div>
+    <nav class="footer-links" aria-label="Footer navigation">
+      <a href="https://www.wwtf.at">wwtf.at</a>
+      <a href="https://www.wwtf.at/imprint/">Imprint</a>
+      <a href="https://www.wwtf.at/privacy/">Privacy</a>
+    </nav>
+  </footer>
+
+  <script>
+    (function () {
+      'use strict';
+
+      // Mark JS as ready
+      document.documentElement.classList.add('js-ready');
+
+      // -------------------------------------------------------
+      // Reduced motion check
+      // -------------------------------------------------------
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // -------------------------------------------------------
+      // Counter animation
+      // -------------------------------------------------------
+      function animateCounter(el) {
+        const target = parseInt(el.dataset.counter, 10);
+        const duration = parseInt(el.dataset.duration || 1800, 10);
+
+        if (prefersReducedMotion) {
+          el.textContent = target.toLocaleString();
+          return;
+        }
+
+        const startTime = performance.now();
+
+        function easeOutCubic(t) {
+          return 1 - Math.pow(1 - t, 3);
+        }
+
+        function tick(now) {
+          const elapsed = now - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          const eased = easeOutCubic(progress);
+          const current = Math.round(eased * target);
+          el.textContent = current.toLocaleString();
+
+          if (progress < 1) {
+            requestAnimationFrame(tick);
+          } else {
+            el.textContent = target.toLocaleString();
+          }
+        }
+
+        requestAnimationFrame(tick);
+      }
+
+      // Counter observer
+      var counterObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !entry.target.dataset.counted) {
+            entry.target.dataset.counted = 'true';
+            animateCounter(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+
+      document.querySelectorAll('[data-counter]').forEach(function (el) {
+        counterObserver.observe(el);
+      });
+
+      // -------------------------------------------------------
+      // Portfolio stat — €11.2M special case
+      // -------------------------------------------------------
+      var euroEl = document.querySelector('[data-counter-text]');
+      if (euroEl) {
+        var euroObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting && !entry.target.dataset.counted) {
+              entry.target.dataset.counted = 'true';
+              if (prefersReducedMotion) {
+                entry.target.textContent = '€11.2M';
+                return;
+              }
+              var duration = 1800;
+              var startTime = performance.now();
+              function easeOutCubic(t) { return 1 - Math.pow(1 - t, 3); }
+              function tick(now) {
+                var elapsed = now - startTime;
+                var progress = Math.min(elapsed / duration, 1);
+                var eased = easeOutCubic(progress);
+                var val = (eased * 11.2).toFixed(1);
+                entry.target.textContent = '€' + val + 'M';
+                if (progress < 1) requestAnimationFrame(tick);
+                else entry.target.textContent = '€11.2M';
+              }
+              requestAnimationFrame(tick);
+            }
+          });
+        }, { threshold: 0.5 });
+        euroObserver.observe(euroEl);
+      }
+
+      // -------------------------------------------------------
+      // Field breakdown bars
+      // -------------------------------------------------------
+      var fieldBarsTriggered = false;
+      var fieldObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting && !fieldBarsTriggered) {
+            fieldBarsTriggered = true;
+            document.querySelectorAll('.field-fill').forEach(function (fill) {
+              var target = fill.style.getPropertyValue('--target-width');
+              if (prefersReducedMotion) {
+                fill.style.width = target;
+              } else {
+                requestAnimationFrame(function () {
+                  fill.style.width = target;
+                });
+              }
+            });
+          }
+        });
+      }, { threshold: 0.25 });
+
+      var fieldBarsEl = document.getElementById('field-bars');
+      if (fieldBarsEl) fieldObserver.observe(fieldBarsEl);
+
+      // -------------------------------------------------------
+      // Institution chart state machine
+      // -------------------------------------------------------
+      var institutionRows = {
+        'uni-wien':   document.getElementById('bar-uni-wien'),
+        'meduni-wien': document.getElementById('bar-meduni-wien'),
+        'tu':          document.getElementById('bar-tu-wien'),
+        'boku':        document.getElementById('bar-boku'),
+        'oeaw':        document.getElementById('bar-oeaw'),
+        'wu-wien':     document.getElementById('bar-wu-wien'),
+        'ist':         document.getElementById('bar-ist')
+      };
+
+      var currentChartStep = -1;
+
+      function updateInstitutionChart(step) {
+        if (step === currentChartStep) return;
+        currentChartStep = step;
+
+        var allKeys = Object.keys(institutionRows);
+
+        // First, set bar widths for all (only once, on first activation)
+        allKeys.forEach(function (key) {
+          var row = institutionRows[key];
+          if (!row) return;
+          var fill = row.querySelector('.chart-bar-fill');
+          if (fill && !fill.dataset.animated) {
+            fill.dataset.animated = 'true';
+            var target = fill.style.getPropertyValue('--target-width');
+            if (prefersReducedMotion) {
+              fill.style.width = target;
+            } else {
+              requestAnimationFrame(function () {
+                fill.style.width = target;
+              });
+            }
+          }
+        });
+
+        if (step === 0) {
+          // Show all bars dimmed initially, none highlighted
+          allKeys.forEach(function (key) {
+            var row = institutionRows[key];
+            if (!row) return;
+            row.classList.remove('highlighted', 'dimmed', 'tu-highlight');
+            row.classList.add('visible');
+          });
+        } else if (step === 1) {
+          // Highlight Uni Wien + MedUni Wien, dim others
+          allKeys.forEach(function (key) {
+            var row = institutionRows[key];
+            if (!row) return;
+            row.classList.remove('visible', 'highlighted', 'dimmed', 'tu-highlight');
+            if (key === 'uni-wien' || key === 'meduni-wien') {
+              row.classList.add('highlighted');
+            } else {
+              row.classList.add('dimmed');
+            }
+          });
+        } else if (step === 2) {
+          // Highlight TU Wien
+          allKeys.forEach(function (key) {
+            var row = institutionRows[key];
+            if (!row) return;
+            row.classList.remove('visible', 'highlighted', 'dimmed', 'tu-highlight');
+            if (key === 'tu') {
+              row.classList.add('highlighted', 'tu-highlight');
+            } else {
+              row.classList.add('dimmed');
+            }
+          });
+        } else if (step === 3) {
+          // Show all fully
+          allKeys.forEach(function (key) {
+            var row = institutionRows[key];
+            if (!row) return;
+            row.classList.remove('highlighted', 'dimmed', 'tu-highlight');
+            row.classList.add('visible');
+          });
+        }
+      }
+
+      // Scrolly step observer
+      var stepEls = document.querySelectorAll('.step-card[data-step]');
+      var stepObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            var step = parseInt(entry.target.dataset.step, 10);
+            updateInstitutionChart(step);
+          }
+        });
+      }, {
+        threshold: 0.5,
+        rootMargin: '-10% 0px -40% 0px'
+      });
+
+      stepEls.forEach(function (el) {
+        stepObserver.observe(el);
+      });
+
+      // On mobile, just show all bars immediately
+      function handleMobileChart() {
+        if (window.innerWidth <= 768) {
+          updateInstitutionChart(0);
+          var allFills = document.querySelectorAll('#institution-chart .chart-bar-fill');
+          allFills.forEach(function (fill) {
+            var target = fill.style.getPropertyValue('--target-width');
+            fill.style.width = target;
+          });
+        }
+      }
+
+      handleMobileChart();
+      window.addEventListener('resize', handleMobileChart, { passive: true });
+
+      // Initial chart state — trigger step 0 when scrolly section enters view
+      var scrollySectionEl = document.querySelector('.scrolly-section');
+      if (scrollySectionEl) {
+        var scrollySectionObserver = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              updateInstitutionChart(0);
+              scrollySectionObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1 });
+        scrollySectionObserver.observe(scrollySectionEl);
+      }
+
+    })();
+  </script>
+
+  <!-- SR-only helper -->
+  <style>
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+  </style>
+
+</body>
+</html>
