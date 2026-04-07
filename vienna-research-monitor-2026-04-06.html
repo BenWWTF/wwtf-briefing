@@ -1047,6 +1047,13 @@
       padding: .28rem .72rem;
       border-radius: 20px;
       letter-spacing: .04em;
+      text-decoration: none;
+      transition: background 0.2s, border-color 0.2s, color 0.2s;
+    }
+    .paper-pill:hover {
+      background: rgba(79,168,204,.22);
+      border-color: rgba(79,168,204,.55);
+      color: #fff;
     }
 
     @media (max-width: 768px) {
@@ -1542,10 +1549,10 @@
             <p>The domestic FWF pipeline has been quiet since the March 23 batch, which dispatched more than EUR 3.5 million to Vienna researchers — including EUR 843K to Wagner at MedUni Wien, EUR 652K to Schmidt, and EUR 540K to Klausberger. The next batch is expected before the end of April. The gap between batches is normal; it is not a signal of reduced activity, but of the administrative calendar that governs how grants move from decision to disbursement.</p>
             <p style="font-family:'Source Sans 3',sans-serif;font-size:.82rem;color:rgba(255,255,255,.35);margin-bottom:.7rem;">WWTF-funded papers appearing in Crossref this week</p>
             <div class="paper-pills" role="list" aria-label="WWTF-funded publications this week">
-              <span class="paper-pill" role="listitem">VRG22-007 — Mycorrhizal ecology</span>
-              <span class="paper-pill" role="listitem">ICT20079 — Inequality &amp; complexity</span>
-              <span class="paper-pill" role="listitem">ESS22-040 — Economic forecasting</span>
-              <span class="paper-pill" role="listitem">LS21-015 — BAF chromatin</span>
+              <a class="paper-pill" role="listitem" href="https://www.wwtf.at/programmes/projects/VRG22-007/" target="_blank" rel="noopener">VRG22-007 — Mycorrhizal ecology ↗</a>
+              <a class="paper-pill" role="listitem" href="https://www.wwtf.at/programmes/projects/ICT20079/" target="_blank" rel="noopener">ICT20079 — Inequality &amp; complexity ↗</a>
+              <a class="paper-pill" role="listitem" href="https://www.wwtf.at/programmes/projects/ESS22-040/" target="_blank" rel="noopener">ESS22-040 — Economic forecasting ↗</a>
+              <a class="paper-pill" role="listitem" href="https://www.wwtf.at/programmes/projects/LS21-015/" target="_blank" rel="noopener">LS21-015 — BAF chromatin ↗</a>
             </div>
           </div>
         </div>
